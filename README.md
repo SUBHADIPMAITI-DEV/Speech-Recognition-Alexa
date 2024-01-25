@@ -5,40 +5,10 @@
   * Make sure you have Python installed on your machine. You can download it from python.org.
 
 # Installation
-  * Install the required Python packages using pip:
-
-1. SpeechRecognition:
-    This is a library that provides support for speech recognition in Python. It allows you to recognize speech from various audio sources.
+  * Install the required Python packages from the requirements.txt file using pip:
 
   ```
-  pip install SpeechRecognition
-  ```
-
-2. pyttsx3:
-     This library is a text-to-speech conversion library in Python. It provides a simple interface to convert text into spoken words using various speech engines.
-   
-  ```
-  pip install pyttsx3
-  ```
-
-3. pywhatkit:
-    A Python library that allows you to perform various tasks using the web. In this script, it's being used to play a song on YouTube based on a user's     command.
-
-  ```
-  pip install pywhatkit
-  ```
-
-4. Wikipedia:
-     This is a Python wrapper for the Wikipedia API. It simplifies the process of fetching information from Wikipedia.
-
-  ```
-  pip install wikipedia
-  ```
-
-5. pyjokes: A library that provides a collection of jokes for use in Python programs. In the script, it's used to generate and tell jokes.
-
-  ```
-  pip install pyjokes
+  pip install -r requirements.txt
   ```
 
 # Usage
