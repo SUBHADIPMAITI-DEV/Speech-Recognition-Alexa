@@ -1,14 +1,14 @@
-# Speech-Recognition-Alexa
-  A simple Python script that uses various libraries for speech recognition and text-to-speech to create a basic virtual assistant similar to Alexa. The script allows users to interact with the virtual assistant by giving voice commands for tasks like playing music, checking the time, date, fetching information from Wikipedia, telling jokes, and more.
+# Speech-Recognition-Alexa 🤖
+  * A simple Python script that uses various libraries for speech recognition and text-to-speech to create a basic virtual assistant similar to Alexa. The script allows users to interact with the virtual assistant by giving voice commands for tasks like playing music, checking the time, date, fetching information from Wikipedia, telling jokes, and more.
 
 # Prerequisites
-  Make sure you have Python installed on your machine. You can download it from python.org.
+  * Make sure you have Python installed on your machine. You can download it from python.org.
 
 # Installation
-  Install the required Python packages using pip:
+  * Install the required Python packages using pip:
 
 1. SpeechRecognition:
-      This is a library that provides support for speech recognition in Python. It allows you to recognize speech from various audio sources.
+    This is a library that provides support for speech recognition in Python. It allows you to recognize speech from various audio sources.
 
   ```
   pip install SpeechRecognition
@@ -42,7 +42,7 @@
   ```
 
 # Usage
-  Run the script in your terminal or command prompt:
+  * Run the script in your terminal or command prompt:
 
   ```
   python alexa.py
