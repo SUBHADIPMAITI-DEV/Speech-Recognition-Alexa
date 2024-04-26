@@ -20,7 +20,7 @@ def take_instruction():
     try:
         with sr.Microphone() as source:
             print('Listening...')
-            voice = listener.listen(source)
+            voice = listener.listen(source, timeout=5, phrase_time_limit=10)
             command = listener.recognize_google(voice)
             command = command.lower()
             if 'alexa' in command:
@@ -31,6 +31,8 @@ def take_instruction():
         pass
     except sr.RequestError as e:
         print(f"Could not request results from Google Speech Recognition service; {e}")
+    except sr.WaitTimeoutError:
+        print("Timed out while waiting for speech")
     return command, instruction
 
 def my_alexa():
@@ -39,8 +41,11 @@ def my_alexa():
     if any(keyword in command for keyword in ['play', 'music', 'song']):
         # Extract the song name from the command
         song = command.replace('play', '').replace('music', '').replace('song', '')
-        talk(f'Playing {song}')
-        pywhatkit.playonyt(song.strip())
+        try:
+            pywhatkit.playonyt(song.strip())
+        except Exception as e:
+            print(f"Could not play song: {e}")
+            talk("I'm sorry, I couldn't play that song")
     elif 'time' in command:
         current_time = datetime.datetime.now().strftime('%I:%M %p')
         talk('Current time is ' + current_time)
@@ -49,15 +54,23 @@ def my_alexa():
         talk('Today is ' + current_date)
     elif 'who the heck is' in command:
         person = command.replace('who the heck is', '')
-        info = wikipedia.summary(person, 1)
-        print('Wikipedia Summary:', info)
-        talk(info)
+        try:
+            info = wikipedia.summary(person, 1)
+            print('Wikipedia Summary:', info)
+            talk(info)
+        except Exception as e:
+            print(f"Could not get information about {person}: {e}")
+            talk("I'm sorry, I couldn't find information about that person")
     elif 'are you single' in command:
         talk("I'm in a committed relationship with technology. We make a great couple!")
     elif 'joke' in command:
-        joke = pyjokes.get_joke()
-        print('Joke:', joke)
-        talk(joke)
+        try:
+            joke = pyjokes.get_joke()
+            print('Joke:', joke)
+            talk(joke)
+        except Exception as e:
+            print(f"Could not get joke: {e}")
+            talk("I'm sorry, I couldn't tell a joke right now")
     else:
         talk(instruction)
 
